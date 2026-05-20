@@ -1,2 +1,6 @@
-# Ignoramos env (orbital-n)
+# Ignore env (orbital-n)
 .orbital-n/
+
+# Ignore all "pycache__" folders
+__pycache__/**
+src/**/__pycache__/**
