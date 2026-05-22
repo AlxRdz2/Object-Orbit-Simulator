@@ -22,8 +22,15 @@ class Body(ABC):
         return self     
 
     def calculate_gravity(self, other_body):
-        # Placeholder for calculating gravitational force between this body and another body
-        pass
+        # Parameters for the gravitational force calculation
+        G = 6.67430e-11  # Gravitational constant
+        m1 = self.mass
+        m2 = other_body.mass
+        r = ((self.position[0] - other_body.position[0]) ** 2 + (self.position[1] - other_body.position[1]) ** 2) ** 0.5
+        if r == 0:
+            return 0  # Avoid division by zero
+        force = G * (m1 * m2) / r**2
+        return force
 
     def __str__(self):
         return f"{self.name}: Position={self.position}, Mass={self.mass}, Radius={self.radius}"
