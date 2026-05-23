@@ -41,16 +41,22 @@ class Body(ABC):
         acceleration = force / self.mass  # F = m * a => a = F / m
         return acceleration
     
-    def euler_update(self, other_body, time_step):
+    def euler_update(self, other_body, time_step, velocity=(0, 0), direction=0):
         # Update the position and velocity of the body using Euler's method.
         # This is a simple numerical method for solving ordinary differential equations.
-        # For simplicity, we will assume that the velocity is updated based on the acceleration due to gravity.
-        acceleration = self.calculate_aceleration(other_body)
-        # Update velocity (assuming initial velocity is zero for simplicity)
-        velocity = acceleration * time_step
+
+        # If the velocity is not provided, we will calculate it based on the acceleration and direction.
+        if velocity == (0, 0):
+            acceleration = self.calculate_aceleration(other_body)
+            velocity_x = acceleration * math.cos(math.radians(direction))
+            velocity_y = acceleration * math.sin(math.radians(direction))
+        else:
+            velocity_x, velocity_y = velocity
+        
+        
         # Update position based on velocity
-        new_x = self.position[0] + velocity * time_step
-        new_y = self.position[1] + velocity * time_step
+        new_x = self.position[0] + velocity_x * time_step
+        new_y = self.position[1] + velocity_y * time_step
         self.update_position((new_x, new_y))
     
     def __str__(self):

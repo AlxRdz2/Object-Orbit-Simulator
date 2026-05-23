@@ -22,7 +22,7 @@ class Window:
     def clear(self):
         self.ax.clear()
     
-    def animate(self, frames=100, interval=100):
+    def animate(self, frames=200, interval=10):
         ani = animation.FuncAnimation(self.fig, self.update, frames=frames, interval=interval)
         plt.show()
 
