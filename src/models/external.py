@@ -1,8 +1,8 @@
 from src.models.body import Body
 
 class ExternalBody(Body):
-    def __init__(self, name, position, mass, radius, velocity, direction):
-        super().__init__(name, position, mass, radius)
+    def __init__(self, name, color, position, mass, radius, velocity, direction):
+        super().__init__(name, color, position, mass, radius)
         self.velocity = velocity # Tuple (velocityX, velocityY)
         self.direction = direction # Direction in degrees (0-360)
     

@@ -4,17 +4,18 @@ import math
 
 class Body(ABC):
     @abstractmethod
-    def __init__(self, name, position, mass, radius):
+    def __init__(self, name, color, position, mass, radius):
         self.name = name
+        self.color = color
         self.position = position
         self.mass = mass
         self.radius = radius
     
     def draw(self):
         # Uses the radius to determine the size of the circle representing the body
-        plt.scatter(self.position[0], self.position[1], s=self.radius, label=self.name)
+        plt.scatter(self.position[0], self.position[1], s=self.radius, label=self.name, color=self.color)
         # Shows the name of the body next to the point
-        plt.text(self.position[0], self.position[1], self.name, fontsize=9)
+        # plt.text(self.position[0], self.position[1], self.name, fontsize=9, color=self.color)
         return self
 
     def update_position(self, new_position):
