@@ -8,14 +8,14 @@ from src.models.window import Window
 from src.models.external import ExternalBody
 
 # Instance to test the CelestialBody class using real data.
-earth = CelestialBody("Earth", "blue", (0, 0), 5.97e24, 6371) # Position in km, mass in kg, radius in km
+earth = CelestialBody("Earth", "blue", (0, 0), 5.972e24, 6371) # Position in km, mass in kg, radius in km
 print(earth)
 
 # moon = CelestialBody("Moon", "gray", (384400, 0), 7.35e22, 1737) # Position in km (average distance from Earth), mass in kg, radius in km
 # print(moon)
 
 # Instance 
-satellite = ExternalBody("Satellite", "purple", (265210, 0), 10000, 250, velocity=(0, 1000), direction=5) 
+satellite = ExternalBody("Satellite", "purple", (265210, 0), 10000, 250, velocity=(0, 100)) 
 # Position in km, mass in kg, radius in km, velocity in km/s, direction in degrees
 print(satellite)
 
