@@ -15,7 +15,8 @@ print(earth)
 # print(moon)
 
 # Instance 
-satellite = ExternalBody("Satellite", (380000, 0), 1e3, 1000, velocity=(0, 7.8), direction=90) # Position in km, mass in kg, radius in km, velocity in km/s, direction in degrees
+satellite = ExternalBody("Satellite", (265210, 0), 10000, 250, velocity=(0, 0), direction=0) 
+# Position in km, mass in kg, radius in km, velocity in km/s, direction in degrees
 print(satellite)
 
 # Calculate the gravitational force between Earth and Moon and print the result.
@@ -25,5 +26,5 @@ print(satellite)
 # print(f"Acceleration of the Moon due to Earth's gravity: {acceleration:.2e} m/s^2")
 
 # Instance of window object to test the animation of the celestial bodies.
-window = Window(limits=(5e5, 5e5), objects=[earth, satellite])
+window = Window(limits=(600000, 600000), objects=[earth, satellite])
 window.animate(frames=120, interval=120)

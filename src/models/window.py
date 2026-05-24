@@ -15,9 +15,15 @@ class Window:
         self.ax.set_xlim(-self.limits[0], self.limits[0])
         self.ax.set_ylim(-self.limits[1], self.limits[1])
         plt.axis("off")  # Hide axes for better visualization
+        # For each object in the window, we will call the euler update to update their positions
+        # and then we will call the draw method to draw them on the window.
         for obj in self.objects:
-            obj.euler_update(self.objects[0], time_step=1)  # Update the position of the object based on the first object (for simplicity)
+            # For each object we compare all the other objects to calculate the gravitational force and update the position accordingly.
+            for other_obj in self.objects:
+                if obj != other_obj:
+                    obj.euler_update(other_obj, time_step=1)
             obj.draw()
+        return self
 
     def clear(self):
         self.ax.clear()

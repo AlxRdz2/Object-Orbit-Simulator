@@ -45,14 +45,11 @@ class Body(ABC):
         # Update the position and velocity of the body using Euler's method.
         # This is a simple numerical method for solving ordinary differential equations.
 
-        # If the velocity is not provided, we will calculate it based on the acceleration and direction.
-        if velocity == (0, 0):
-            acceleration = self.calculate_aceleration(other_body)
-            velocity_x = acceleration * math.cos(math.radians(direction))
-            velocity_y = acceleration * math.sin(math.radians(direction))
-        else:
-            velocity_x, velocity_y = velocity
-        
+        # Calculate the acceleration due to gravity from the other body
+        acceleration = self.calculate_aceleration(other_body)
+        # Update velocity based on acceleration
+        velocity_x = velocity[0] + acceleration * math.cos(direction) * time_step
+        velocity_y = velocity[1] + acceleration * math.sin(direction) * time_step        
         
         # Update position based on velocity
         new_x = self.position[0] + velocity_x * time_step
