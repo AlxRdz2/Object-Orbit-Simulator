@@ -52,7 +52,7 @@ class Body(ABC):
         distance = math.sqrt((self.position[0] - other_body.position[0])**2 + (self.position[1] - other_body.position[1])**2)
         return distance
     
-    def euler_update(self, other_body, time_step, velocity=(0, 0), direction=0):
+    def euler_update(self, other_body, time_step):
         # Update the position and velocity of the body using Euler's method.
         # This is a simple numerical method for solving ordinary differential equations.
 
